@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peter Top Up</title>
+<style>
+body{margin:0;background:#070b18;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:28px 12px;background:#101a35;border-bottom:2px solid #168cff}
+h1{color:#29a1ff;margin:0}
+header p{color:#cbd8ee}
+main{max-width:700px;margin:auto;padding:18px}
+h2{color:#38a5ff}
+.card{background:#111a2e;border:1px solid #263b60;border-radius:12px;padding:16px;margin:12px 0}
+.price{display:flex;justify-content:space-between;gap:8px;align-items:center}
+button{background:#0788ff;color:white;border:0;border-radius:8px;padding:12px;font-weight:bold;cursor:pointer}
+input,select{box-sizing:border-box;width:100%;padding:12px;margin:7px 0;background:#080f20;color:white;border:1px solid #405578;border-radius:7px}
+.full{width:100%;margin-top:12px}
+small{color:#b8c7df}
+footer{text-align:center;padding:25px;color:#9eabc3}
+</style>
+</head>
+<body>
+<header>
+<h1>⚡ PETER TOP UP ⚡</h1>
+<p>Free Fire Diamonds • Rapid • Senp</p>
+</header>
+<main>
+<h2>💎 Pri Diamonds yo</h2>
+<div id="prices"></div>
+<div class="card">
+<h2>🛒 Pase kòmand ou</h2>
+<form id="order">
+<label>Free Fire Player ID</label>
+<input id="player" required placeholder="Antre Player ID ou">
+<label>Chwazi pake Diamonds</label>
+<select id="pack"></select>
+<label>Non ou</label>
+<input id="customer" required placeholder="Antre non ou">
+<label>Peman</label>
+<select id="payment">
+<option>MonCash</option>
+</select>
+<button class="full" type="submit">Kontinye sou WhatsApp</button>
+</form>
+<p><small>N ap konfime kòmand lan ak peman an sou WhatsApp.</small></p>
+</div>
+</main>
+<footer>© 2026 Peter Top Up • Mèsi pou konfyans ou!</footer>
+<script>
+const packs=[
+["100 + 10",110,170],
+["300 + 41",341,490],
+["500 + 72",572,800],
+["1000 + 166",1166,1600],
+["2000 + 398",2398,3000],
+["6000 + 160",6160,8000]
+];
+const prices=document.getElementById("prices");
+const pack=document.getElementById("pack");
+packs.forEach((p,i)=>{
+prices.innerHTML+=`<div class="card price"><span>💎 ${p[0]} Diamonds</span><b>${p[2]} G</b></div>`;
+pack.innerHTML+=`<option value="${i}">${p[0]} Diamonds — ${p[2]} G</option>`;
+});
+document.getElementById("order").addEventListener("submit",function(e){
+e.preventDefault();
+const p=packs[Number(pack.value)];
+const msg=`Bonjou Peter Top Up! Mwen vle kòmande Diamonds.%0ANon: ${encodeURIComponent(document.getElementById("customer").value)}%0APlayer ID: ${encodeURIComponent(document.getElementById("player").value)}%0APake: ${encodeURIComponent(p[0])} Diamonds (${p[1]} total)%0APri: ${p[2]} G%0APeman: MonCash`;
+window.open("https://wa.me/50934715851?text="+msg,"_blank");
+});
+</script>
+</body>
+</html>
